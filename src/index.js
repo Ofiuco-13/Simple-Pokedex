@@ -4,6 +4,7 @@ const start = () => {
     .then((res) => {
       showTotalPokemon(res.count);
       showPokemonList(res.results);
+      showPaginator(res.count, res.previous, res.next);
     });
 };
 
