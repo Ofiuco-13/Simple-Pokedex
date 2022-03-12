@@ -44,6 +44,10 @@ const showPokemon = (pokemon) => {
   const {
     id,
     sprites: { front_default },
+    height,
+    weight,
+    stats,
+    base_experience,
   } = pokemon;
 
   const $pokeDetails = document.querySelector("#pokemon");
@@ -53,7 +57,67 @@ const showPokemon = (pokemon) => {
   const $pokeImg = document.createElement("img");
   $pokeImg.setAttribute("src", `${front_default}`);
 
-  $pokeDetails.append($pokeId, $pokeImg);
+  const $types = document.createElement("div");
+  createTypes(pokemon.types, $types);
+
+  const $abilities = document.createElement("div");
+  $abilities.innerHTML = "Abilities: ";
+  createAbilities(pokemon.abilities, $abilities);
+
+  const $height = document.createElement("span");
+  $height.innerHTML = `Height: ${height}`;
+  const $weight = document.createElement("span");
+  $weight.innerHTML = ` Weight: ${weight}`;
+
+  const $stats = document.createElement("div");
+  $stats.innerHTML = "Stats:";
+  createStats(stats, $stats);
+
+  const $baseExperience = document.createElement("div");
+  $baseExperience.innerHTML = `Base experiencie: ${base_experience}`;
+
+  removePreviousPokemon();
+
+  $pokeDetails.append(
+    $pokeId,
+    $pokeImg,
+    $types,
+    $abilities,
+    $height,
+    $weight,
+    $stats,
+    $baseExperience
+  );
+};
+
+const createTypes = (types, div) => {
+  types.forEach((key) => {
+    const $typeSpan = document.createElement("span");
+    $typeSpan.innerHTML = key.type.name;
+    $typeSpan.classList = "mr-2";
+    div.append($typeSpan);
+  });
+};
+
+const createAbilities = (abilities, div) => {
+  abilities.forEach((key) => {
+    const $abilitySpan = document.createElement("span");
+    $abilitySpan.innerHTML = key.ability.name;
+    $abilitySpan.classList = "mr-2";
+    div.append($abilitySpan);
+  });
+};
+
+const createStats = (stats, div) => {
+  stats.forEach((key) => {
+    const $statDiv = document.createElement("div");
+    $statDiv.innerHTML = `${key.base_stat}: ${key.stat.name}`;
+    div.append($statDiv);
+  });
+};
+
+const removePreviousPokemon = () => {
+  document.querySelector("#pokemon").innerHTML = "";
 };
 
 start();
