@@ -10,6 +10,7 @@ export const showPokemonList = (results) => {
     const $pokemon = document.createElement("div");
     $pokemon.innerHTML = pokemon.name;
     $pokemon.classList = `
+    pokemon
     p-6 
     mt-2 
     border 
