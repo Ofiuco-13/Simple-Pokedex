@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./src/index.js",
-    "wind": "npx tailwindcss -i ./src/interface/input.css -o ./dist/output.css --watch"
+    "wind": "npx tailwindcss -i ./src/interface/input.css -o ./dist/output.css --watch",
+    "cy:op": "./node_modules/.bin/cypress open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cypress": "^9.5.1",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.5.1",
