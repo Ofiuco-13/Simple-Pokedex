@@ -6,7 +6,9 @@
   "scripts": {
     "lint": "eslint ./src/index.js",
     "wind": "npx tailwindcss -i ./src/interface/input.css -o ./dist/output.css --watch",
-    "cy:op": "./node_modules/.bin/cypress open"
+    "cy:op": "./node_modules/.bin/cypress open",
+    "serve": "http-server -c-1",
+    "test:ui:dev": "run-p serve cy:op"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
     "cypress": "^9.5.1",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
     "tailwindcss": "^3.0.23"
   }
