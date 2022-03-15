@@ -1,27 +1,12 @@
 /// <reference types="Cypress" />
 
 describe("Pokedex", () => {
-  let fetchPolyfill;
-
   before(() => {
-    const polifillUrl = "https://unpkg.com/unfetch@4.2.0/dist/unfetch.umd.js";
+    cy.intercept("GET", "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20", {
+      fixture: "page1.json",
+    }).as("obtainFirstPage");
 
-    cy.request(polifillUrl).then((response) => {
-      fetchPolyfill = response.body;
-    });
-
-    cy.intercept(
-      "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20",
-      "fixture:listing-page-1"
-    ).as("obtainFirstPage");
-
-    cy.visit("http://127.0.0.1:8080", {
-      onBeforeLoad(contentWindow) {
-        delete contentWindow.fetch;
-        contentWindow.eval(fetchPolyfill);
-        contentWindow.fetch = contentWindow.unfetch;
-      },
-    });
+    cy.visit("http://127.0.0.1:8080");
   });
 
   it("verifies if the prev button is hidden when in first page", () => {
@@ -38,12 +23,9 @@ describe("Pokedex", () => {
   });
 
   it("loads a pokemon when selected from the list", () => {
-    cy.intercept("https://pokeapi.co/api/v2/pokemon/bulbasaur").as(
-      "obtainBulbasaur"
-    );
-    cy.fixture("bulbasaur");
-    cy.get(".pokemon").eq(0).click();
-    cy.get(".pokemon").eq(1).click();
+    cy.intercept("https://pokeapi.co/api/v2/pokemon/bulbasaur", {
+      fixture: "bulbasaur.json",
+    }).as("bulbasaur");
   });
 
   it("changes to the next page", () => {
