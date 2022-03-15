@@ -26,6 +26,7 @@ describe("Pokedex", () => {
     cy.intercept("https://pokeapi.co/api/v2/pokemon/bulbasaur", {
       fixture: "bulbasaur.json",
     }).as("bulbasaur");
+    cy.contains("bulbasaur").click();
   });
 
   it("changes to the next page", () => {
