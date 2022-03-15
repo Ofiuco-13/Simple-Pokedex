@@ -91,7 +91,3 @@ export const showPokemon = (pokemon) => {
 export const removePokemonDetails = () => {
   document.querySelector("#pokemon").innerHTML = "";
 };
-
-export const removePreviousPokemons = () => {
-  document.querySelector("#list-container").innerHTML = "";
-};

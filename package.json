@@ -8,7 +8,8 @@
     "wind": "npx tailwindcss -i ./src/interface/input.css -o ./dist/output.css --watch",
     "cy:op": "./node_modules/.bin/cypress open",
     "serve": "http-server -c-1",
-    "test:ui:dev": "run-p serve cy:op"
+    "test:ui:dev": "run-p serve cy:op",
+    "test:dev": "jest --watch"
   },
   "keywords": [],
   "author": "",

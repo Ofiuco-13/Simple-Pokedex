@@ -1,6 +1,3 @@
-import { removePreviousPokemons } from "./list.js";
-import { start } from "../pokedex.js";
-
 export const showButtons = (res) => {
   const $prevButton = document.querySelector("#prev-button");
   const $nextButton = document.querySelector("#next-button");
@@ -17,11 +14,3 @@ export const showButtons = (res) => {
     $prevButton.classList.remove("hidden");
   }
 };
-
-document.addEventListener("click", (e) => {
-  if (e.target.matches("#buttons a")) {
-    e.preventDefault();
-    removePreviousPokemons();
-    start(e.target.getAttribute("href"));
-  }
-});

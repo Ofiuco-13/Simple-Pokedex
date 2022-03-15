@@ -1,8 +1,7 @@
 import { showTotalPokemon, showPokemonList } from "./interface/list.js";
 import { showButtons } from "./interface/buttons.js";
 
-const pokeApi = "https://pokeapi.co/api/v2/pokemon";
-export const start = (api) => {
+const start = (api) => {
   fetch(api)
     .then((res) => res.json())
     .then((res) => {
@@ -12,4 +11,16 @@ export const start = (api) => {
     });
 };
 
-start(pokeApi);
+document.addEventListener("click", (e) => {
+  if (e.target.matches("#buttons a")) {
+    e.preventDefault();
+    removePreviousPokemons();
+    start(e.target.getAttribute("href"));
+  }
+});
+
+const removePreviousPokemons = () => {
+  document.querySelector("#list-container").innerHTML = "";
+};
+
+export default start;
