@@ -56,11 +56,9 @@ export const showPokemon = (pokemon) => {
   $pokeImg.setAttribute("src", `${front_default}`);
 
   const $types = document.createElement("div");
-  createTypes(pokemon.types, $types);
 
   const $abilities = document.createElement("div");
   $abilities.innerHTML = "Abilities: ";
-  createAbilities(pokemon.abilities, $abilities);
 
   const $height = document.createElement("span");
   $height.innerHTML = `Height: ${height}`;
@@ -69,11 +67,13 @@ export const showPokemon = (pokemon) => {
 
   const $stats = document.createElement("div");
   $stats.innerHTML = "Stats:";
-  createStats(stats, $stats);
 
   const $baseExperience = document.createElement("div");
   $baseExperience.innerHTML = `Base experiencie: ${base_experience}`;
 
+  createTypes(pokemon.types, $types);
+  createAbilities(pokemon.abilities, $abilities);
+  createStats(stats, $stats);
   removePokemonDetails();
 
   $pokeDetails.append(
