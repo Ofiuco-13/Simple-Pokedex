@@ -3,6 +3,7 @@ import {
   createAbilities,
   createStats,
 } from "./created-elements.js";
+import { loadPokemon } from "../storage.js";
 
 export const showPokemonList = (results) => {
   const $listContainer = document.querySelector("#list-container");
@@ -28,14 +29,6 @@ export const showPokemonList = (results) => {
 
 export const showTotalPokemon = (count) => {
   document.querySelector("#total-pokemon").innerHTML = count;
-};
-
-export const loadPokemon = (pokeName) => {
-  fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
-    .then((res) => res.json())
-    .then((res) => {
-      showPokemon(res);
-    });
 };
 
 export const showPokemon = (pokemon) => {
