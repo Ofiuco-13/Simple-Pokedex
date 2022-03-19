@@ -1,12 +1,10 @@
 import { showPokemon } from "./interface/list.js";
 
 export const loadPokemon = async (pokeName) => {
-  if (pokeName === undefined || pokeName === null) {
+  if (pokeName === undefined) {
     throw new Error("A name is needed to load a pokemon");
   }
-
   let pokemon = loadPokemonFromLS(pokeName);
-
   if (pokemon === null) {
     pokemon = await loadPokemonFromAPI(pokeName);
     savePokemonOnLS(pokemon);
@@ -21,6 +19,9 @@ const loadPokemonFromLS = (pokeName) => {
 };
 
 const loadPokemonFromAPI = async (pokeName) => {
+  if (pokeName === undefined) {
+    throw new Error("A name is needed to load a pokemon");
+  }
   const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);
   return await data.json();
 };
@@ -29,5 +30,6 @@ const savePokemonOnLS = (pokemon) => {
   if (pokemon === null || pokemon === undefined) {
     throw new Error("A pokemon is needed to save it in localStorage");
   }
+  console.log(pokemon.name, pokemon);
   localStorage.setItem(pokemon.name, JSON.stringify(pokemon));
 };
