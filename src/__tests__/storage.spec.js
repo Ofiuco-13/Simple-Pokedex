@@ -33,7 +33,7 @@ describe("tests loadPokemon function", () => {
       expect(global.fetch).toHaveBeenCalledTimes(0);
     }
   });
-  test("if pokemon is null, fetch the original api", async () => {
+  test("if pokemon is null, fetch the original api and save the data en ls", async () => {
     try {
       return await localStorageMock.getItem(null);
     } catch (error) {
