@@ -9,7 +9,8 @@
     "cy:op": "./node_modules/.bin/cypress open",
     "serve": "http-server -c-1",
     "test:ui:dev": "run-p serve cy:op",
-    "test:dev": "jest --watch"
+    "test:dev": "jest --watch",
+    "test": "jest --collect-coverage"
   },
   "keywords": [],
   "author": "",
