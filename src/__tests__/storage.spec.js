@@ -1,4 +1,5 @@
 import { loadPokemon } from "../storage.js";
+import bulbasaur from "../../cypress/fixtures/bulbasaur.json";
 
 beforeEach(() => {
   global.fetch = jest.fn();
@@ -50,7 +51,7 @@ describe("tests loadPokemon function", () => {
         "https://pokeapi.co/api/v2/pokemon/bulbasaur"
       );
 
-      localStorageMock.setItem("bulbasaur", "bulbasaur");
+      localStorageMock.setItem("bulbasaur", bulbasaur);
     }
   });
 });
