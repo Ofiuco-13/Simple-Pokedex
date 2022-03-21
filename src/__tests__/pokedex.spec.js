@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import fixture from "../../cypress/fixtures/pokedex.fixture.js";
+import fixture from "./pokedex.fixture.js";
 import start from "../pokedex.js";
 import page1 from "../../cypress/fixtures/page1.json";
 
