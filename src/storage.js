@@ -12,13 +12,13 @@ export const loadPokemon = async (pokeName) => {
   showPokemon(pokemon);
 };
 
-const loadPokemonFromLS = (pokeName) => {
+export const loadPokemonFromLS = (pokeName) => {
   const pokemon = localStorage.getItem(pokeName);
   if (pokemon === null) return null;
   return JSON.parse(pokemon);
 };
 
-const loadPokemonFromAPI = async (pokeName) => {
+export const loadPokemonFromAPI = async (pokeName) => {
   if (pokeName === undefined) {
     throw new Error("A name is needed to load a pokemon");
   }
@@ -26,10 +26,9 @@ const loadPokemonFromAPI = async (pokeName) => {
   return await data.json();
 };
 
-const savePokemonOnLS = (pokemon) => {
+export const savePokemonOnLS = (pokemon) => {
   if (pokemon === null || pokemon === undefined) {
     throw new Error("A pokemon is needed to save it in localStorage");
   }
-  console.log(pokemon.name, pokemon);
   localStorage.setItem(pokemon.name, JSON.stringify(pokemon));
 };
