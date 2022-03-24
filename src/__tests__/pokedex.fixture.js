@@ -10,10 +10,10 @@ const fixture = `
     <span class="block text-sm font-medium"><span id="total-pokemon">1126</span> Pokemon</span>
   </div>
   <div class="flex flex-col px-2 pb-2 overflow-auto" id="list-container">
-  <div class="pokemon"></div>
-  <div class="pokemon"></div>
-  <div class="pokemon"></div>
-  <div class="pokemon"></div>
+  <div class="pokemon">bulbasaur</div>
+  <div class="pokemon">ivysaur</div>
+  <div class="pokemon">venusaur</div>
+  <div class="pokemon">charmander</div>
   <div class="pokemon"></div>
   <div class="pokemon"></div>
   <div class="pokemon"></div>
