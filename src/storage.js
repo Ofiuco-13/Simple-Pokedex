@@ -1,15 +1,19 @@
 import { showPokemon } from "./interface/list.js";
+import mapPokemon from "./class/mapper.js";
 
 export const loadPokemon = async (pokeName) => {
   if (pokeName === undefined) {
     throw new Error("A name is needed to load a pokemon");
   }
   let pokemon = loadPokemonFromLS(pokeName);
+  let pokemonData;
   if (pokemon === null) {
     pokemon = await loadPokemonFromAPI(pokeName);
-    savePokemonOnLS(pokemon);
+    console.log(pokemon.stats[0].base_stat, pokemon.stats[0].stat.name);
+    pokemonData = mapPokemon(pokemon);
+    savePokemonOnLS(pokemonData);
   }
-  showPokemon(pokemon);
+  pokemon ? showPokemon(pokemon) : showPokemon(pokemonData);
 };
 
 export const loadPokemonFromLS = (pokeName) => {

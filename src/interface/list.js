@@ -37,8 +37,10 @@ export const showPokemon = (pokemon) => {
     sprites: { front_default },
     height,
     weight,
-    stats,
+    types,
+    abilities,
     base_experience,
+    stats,
   } = pokemon;
 
   const $pokeDetails = document.querySelector("#pokemon");
@@ -64,8 +66,8 @@ export const showPokemon = (pokemon) => {
   const $baseExperience = document.createElement("div");
   $baseExperience.innerHTML = `Base experiencie: ${base_experience}`;
 
-  createTypes(pokemon.types, $types);
-  createAbilities(pokemon.abilities, $abilities);
+  createTypes(types, $types);
+  createAbilities(abilities, $abilities);
   createStats(stats, $stats);
   removePokemonDetails();
 
